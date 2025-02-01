@@ -1,35 +1,30 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_URL = "https://prueba-tecnica-api-tienda-moviles.onrender.com";
-const API_KEY = "87909682e6cd74208f41a6ef39fe4191";
+const API_KEY = '87909682e6cd74208f41a6ef39fe4191';
 
-// Configuración global de Axios
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: 'https://prueba-tecnica-api-tienda-moviles.onrender.com',
   headers: {
-    "x-api-key": API_KEY,
-    "Content-Type": "application/json",
+    'x-api-key': API_KEY,
   },
 });
 
-// Obtener todos los productos (primeros 20)
-export const fetchProductos = async () => {
+export const getProducts = async () => {
   try {
-    const response = await api.get("/products");
-    return response.data.slice(0, 20); // Tomamos solo los primeros 20
+    const response = await api.get('/products');
+    return response.data;
   } catch (error) {
-    console.error("Error al obtener productos:", error);
+    console.error('Error fetching products:', error);
     throw error;
   }
 };
 
-// Obtener un producto por ID
-export const fetchProductoPorId = async (id: string) => {
+export const getProductById = async (id: string) => {
   try {
     const response = await api.get(`/products/${id}`);
     return response.data;
   } catch (error) {
-    console.error(`Error al obtener el producto con ID ${id}:`, error);
+    console.error('Error fetching product by ID:', error);
     throw error;
   }
 };
