@@ -1,7 +1,7 @@
 /* app.css */
 html,
 body {
-  background-color: white; /* Ejemplo: color de fondo blanco */
+  background-color: white; 
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
 }
@@ -10,27 +10,20 @@ body {
     display: grid;
 }
 
+.grid-row{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 10em;
+}
+
+.no-border{
+    border-radius: inherit!important;
+  }
+
 .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-@media (min-width: 640px) {
-    .grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 768px) {
-    .grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid-cols-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
 
 .gap-4 {
     gap: 1rem;
@@ -62,6 +55,10 @@ body {
 
 .mb-2 {
     margin-bottom: 0.5rem;
+}
+
+.mx{
+    margin: 0rem 0.7rem;
 }
 
 .font-bold {
@@ -105,8 +102,24 @@ body {
     right: 0px;
 }
 
-.bg-red-500 {
+.text-gray-600{
+    color: #333333;
+}
+
+.bg-red-500{
     background-color: rgb(220 38 60);
+}
+
+.text-red {
+    color: rgb(220 38 60);
+}
+
+.bg-none {
+    background: transparent;
+    border:none;
+    cursor:pointer;
+    padding: 0;
+    font-size: 1em;
 }
 
 .text-white {
@@ -115,6 +128,10 @@ body {
 
 .rounded-full {
     border-radius: 9999px;
+}
+.text-m{
+    font-size: 1.3rem;
+    line-height: 1rem;
 }
 
 .text-xs {
@@ -131,3 +148,123 @@ body {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
+
+
+
+
+/* Estilos generales para el contenedor */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Estilos generales para el carrito */
+  .carrito-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .carrito-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .carrito-item .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .carrito-item .details p {
+    margin: 0.25rem 0;
+  }
+  
+  /* Para pantallas móviles */
+  @media (max-width: 640px) {
+    .carrito-item {
+      grid-template-columns: 1fr; 
+    }
+    .carrito-item img {
+      width: 100%;
+    }
+  
+    .carrito-item .details {
+      padding-left: 0;
+    }
+  
+    /* Botones en móviles debajo */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+  }
+  
+  /* Estilos para la sección de total y continuar comprando */
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .actions .total {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: #3e3e3e;
+  }
+  
+  .actions button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .button-secondary {
+    background-color: transparent;
+    color: #3e3e3e;
+    border: 1px solid #444;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+  }
+
+
+  .button-secondary:hover {
+    transform:scale(.99);
+  }
+  
+  .actions .total-price {
+    background-color: #f44336;
+    color: white;
+  }
+  
+@media (min-width: 640px) {
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (min-width: 768px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-row{
+        gap: 1em;
+    }
+
+}
+
