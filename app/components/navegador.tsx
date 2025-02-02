@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import {  useCarritoContext } from '../context/CarritoContext'; // Importa el contexto del carrito
 
 const Navegador: React.FC = () => {
-  const { carrito } = useCarritoContext(); // Cambia aquí
+  const { carrito } = useCarritoContext(); 
 
   return (
     <nav className="bg-gray-200 p-4 flex justify-between items-center">
-      <Link to="/home" className="font-bold text-xl">Logo</Link> {/* Reemplaza "Logo" con tu logo */}
+      <Link to="/" className="font-bold text-xl">Logo</Link> 
       <div>
         <Link to="/carrito" className="relative">
           <span className="material-symbols-outlined">shopping_cart</span> {/* Icono de carrito */}

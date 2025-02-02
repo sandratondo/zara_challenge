@@ -2,8 +2,11 @@ import { useLoaderData } from 'react-router-dom';
 import { getProductById } from '../api';
 
 export async function loader({ params }: any) {
-  const product = await getProductById(params.id);
-  return product;
+  try {
+    return await getProductById(params.id);
+  } catch (error) {
+    throw new Response('Producto no encontrado', { status: 404 });
+  }
 }
 
 export default function Productos() {
@@ -16,6 +19,9 @@ export default function Productos() {
   return (
     <div>
       <h1>{product.name}</h1>
+      <img src={product.imageUrl} alt={product.name} />
+      <p>Marca: {product.brand}</p>
+      <p>Precio: {product.basePrice}</p>
       {/* Muestra los detalles del producto */}
     </div>
   );
