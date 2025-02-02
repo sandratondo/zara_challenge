@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { getProducts } from '../api';
 
 interface Product {
   id: string;
@@ -35,32 +35,21 @@ export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const fetchProductos = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://prueba-tecnica-api-tienda-moviles.onrender.com/products', {
-          headers: {
-            'x-api-key': '87909682e6cd74208f41a6ef39fe4191',
-          },
-        });
-        setProductos(response.data);
+        const data = await getProducts(searchTerm);
+        setProductos(data);
       } catch (error: any) {
         setError(error.message);
-        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchProductos();
-  }, []);
+  }, [searchTerm]);
 
-  const filteredProducts = productos.filter((product) => {
-      const search = searchTerm.toLowerCase();
-      const nameMatch = product.name.toLowerCase().includes(search);
-      const brandMatch = product.brand.toLowerCase().includes(search);
-      return nameMatch || brandMatch;
-  });
 
   return (
-    <ProductoContext.Provider value={{ productos: filteredProducts, loading, error, searchTerm, setSearchTerm }}>
+    <ProductoContext.Provider value={{ productos, loading, error, searchTerm, setSearchTerm }}>
       {children}
     </ProductoContext.Provider>
   );

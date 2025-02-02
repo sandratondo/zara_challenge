@@ -4,7 +4,7 @@ import Navegador from '../components/navegador';
 
 export default function Home() {
   const { productos, loading, error, searchTerm, setSearchTerm } = useProductos();
-
+  
   return (
     <div>
       <Navegador /> 
@@ -19,7 +19,7 @@ export default function Home() {
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {productos.slice(0, 20).map((producto, index) => (
+        {productos.map((producto, index) => (
           <TarjetaProducto key={index} producto={producto} /> // Usar el índice como key
         ))}
       </div>

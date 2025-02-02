@@ -9,12 +9,13 @@ const api = axios.create({
   },
 });
 
-export const getProducts = async () => {
+export const getProducts = async (searchTerm: string = '') => {
   try {
-    const response = await api.get('/products');
+    const response = await api.get('/products',{
+      params: { search: searchTerm, limit: 20 }, //limite productos api
+    });
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
     throw error;
   }
 };
@@ -24,7 +25,6 @@ export const getProductById = async (id: string) => {
     const response = await api.get(`/products/${id}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching product by ID:', error);
     throw error;
   }
 };

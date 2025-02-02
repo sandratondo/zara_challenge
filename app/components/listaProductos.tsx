@@ -1,7 +1,5 @@
-// components/listaProductos.tsx
-
 import React from "react";
-import TarjetaProducto from "./tarjetaProducto"; // Asegúrate de que este componente esté correctamente definido
+import TarjetaProducto from "./tarjetaProducto";
 
 interface Producto {
   id: string;
