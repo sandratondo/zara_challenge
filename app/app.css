@@ -1,4 +1,7 @@
 /* app.css */
+*{
+    box-sizing: border-box;
+}
 html,
 body {
   background-color: white; 
@@ -57,8 +60,16 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.mx-b{
+    margin: 0rem 2rem;
+}
+
 .mx{
     margin: 0rem 0.7rem;
+}
+
+.my-b{
+    margin: 4rem 0rem;
 }
 
 .font-bold {
@@ -126,6 +137,10 @@ body {
     color: white;
 }
 
+.text-black{
+    color: black;
+}
+
 .rounded-full {
     border-radius: 9999px;
 }
@@ -149,7 +164,16 @@ body {
     padding-bottom: 0.25rem;
 }
 
-
+nav{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white; 
+    z-index: 1000; 
+    padding: 1rem 6.5rem; 
+    width:100%;
+}
 
 
 /* Estilos generales para el contenedor */
@@ -182,6 +206,11 @@ body {
   .carrito-item .details p {
     margin: 0.25rem 0;
   }
+
+  .carrito-count{
+    padding: 0.10rem 0.40rem;
+    margin-left: -9px;
+    }
   
   /* Para pantallas móviles */
   @media (max-width: 640px) {
@@ -241,7 +270,27 @@ body {
     background-color: #f44336;
     color: white;
   }
+
+  .search-input {
+    width: 100%;
+    padding: 8px 0px;
+    border: none;
+    border-bottom: 1px solid #333; 
+    outline: none; 
+    font-size: 16px;
+    transition: border-bottom 0.3s ease-in-out;
+  }
   
+  .search-input:focus {
+    border-bottom: 1px solid #ccc; 
+  }
+  
+  .result-text {
+    color: #666;
+    margin-top: .70rem;
+    font-size: .80rem;
+  }
+
 @media (min-width: 640px) {
     .grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {  useCarritoContext } from '../context/CarritoContext'; // Importa el contexto del carrito
-import { FaShoppingCart } from 'react-icons/fa';
-
+import { HiOutlineShoppingBag } from 'react-icons/hi';
+import { FaStore } from "react-icons/fa";
 const Navegador: React.FC = () => {
   const { carrito } = useCarritoContext(); 
 
@@ -10,13 +10,13 @@ const Navegador: React.FC = () => {
     const cantidadTotal = carrito.reduce((total, producto) => total + producto.quantity, 0);
 
   return (
-    <nav className="bg-gray-200 p-4 flex justify-between items-center">
-      <Link to="/" className="font-bold text-xl">Logo</Link> 
+    <nav className="flex justify-between items-center">
+      <Link to="/" className="font-bold text-black"><FaStore size={30} /></Link> 
       <div>
         <Link to="/carrito" className="relative">
-          <FaShoppingCart size={24} />
+          <HiOutlineShoppingBag size={24} />
           {cantidadTotal > 0 && (
-            <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-2 py-1">
+            <span className="absolute carrito-count bg-red-500 text-white rounded-full text-xs px-2 py-1">
               {cantidadTotal}
             </span>
           )}
