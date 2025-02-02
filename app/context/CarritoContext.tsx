@@ -15,7 +15,6 @@ interface CarritoContextType {
   carrito: CarritoItem[];
   addToCarrito: (item: CarritoItem) => void;
   removeFromCarrito: (id: string, color: string, storage: string) => void;
-  clearCarrito: () => void;
   totalPrecio: number;
 }
 
@@ -23,7 +22,6 @@ const CarritoContext = createContext<CarritoContextType>({
   carrito: [],
   addToCarrito: () => {},
   removeFromCarrito: () => {},
-  clearCarrito: () => {},
   totalPrecio: 0,
 });
 
@@ -59,14 +57,10 @@ export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setCarrito((prev) => prev.filter((item) => !(item.id === id && item.color === color && item.storage === storage)));
   };
 
-  const clearCarrito = () => {
-    setCarrito([]);
-  };
-
   const totalPrecio = carrito.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <CarritoContext.Provider value={{ carrito, addToCarrito, removeFromCarrito, clearCarrito, totalPrecio }}>
+    <CarritoContext.Provider value={{ carrito, addToCarrito, removeFromCarrito, totalPrecio }}>
       {children}
     </CarritoContext.Provider>
   );

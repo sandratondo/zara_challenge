@@ -1,13 +1,21 @@
 import React from 'react';
 import { useCarritoContext } from '../context/CarritoContext';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Carrito: React.FC = () => {
-  const { carrito, removeFromCarrito, clearCarrito, totalPrecio } = useCarritoContext();
+  const { carrito, removeFromCarrito, totalPrecio } = useCarritoContext();
+  const redirigir = useNavigate();
+
+    // Contar los elementos en el carrito
+    const totalItems = carrito.reduce((acc, item) => acc + item.quantity, 0);
+
+    const redirigirPrincipal = () => {
+      redirigir('/'); // Redirige página princiapal
+    };
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Carrito de Compras</h1>
+      <h2 className="text-2xl font-bold">Carrito ({totalItems})</h2>
       {carrito.length === 0 ? (
         <p className="text-gray-600">Tu carrito está vacío.</p>
       ) : (
@@ -31,12 +39,9 @@ const Carrito: React.FC = () => {
           ))}
           <div className="mt-4 text-right">
             <p className="text-xl font-bold">Total: ${totalPrecio}</p>
-            <button onClick={clearCarrito} className="bg-gray-600 text-white px-4 py-2 rounded mr-2">
-              Vaciar Carrito
-            </button>
-            <Link to="/productos" className="bg-blue-500 text-white px-4 py-2 rounded">
+            <button onClick={redirigirPrincipal} className="bg-gray-600 text-white px-4 py-2 rounded mr-2">
               Continuar Comprando
-            </Link>
+            </button>
           </div>
         </div>
       )}

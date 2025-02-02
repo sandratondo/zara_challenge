@@ -2,6 +2,8 @@ import { getProductById } from '../api';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { useCarritoContext } from '../context/CarritoContext';
+import { useNavigate } from 'react-router-dom';
+
 
 export async function loader({ params }: any) {
   try {
@@ -14,33 +16,37 @@ export async function loader({ params }: any) {
 export default function ProductoDetalle() {
   const product = useLoaderData();
   const { addToCarrito } = useCarritoContext();
+  const redirigir = useNavigate();
 
-  const [selectedColor, setSelectedColor] = useState(product.colorOptions[0]?.name || '');
-  const [selectedStorage, setSelectedStorage] = useState('');
-  const [finalPrice, setFinalPrice] = useState(product.basePrice);
+  const [selecionadoColor, setSelecionadoColor] = useState(product.colorOptions[0]?.name || '');
+  const [selecAlmacenamiento, setSelecAlmacenamiento] = useState('');
+  const [precioFinal, setPrecioFinal] = useState(product.basePrice);
 
   // Manejar selección de almacenamiento y actualizar precio
-  const handleStorageChange = (capacity: string, price: number) => {
-    setSelectedStorage(capacity);
-    setFinalPrice(price);
+  const cambiarAlmacenamiento = (capacity: string, price: number) => {
+    setSelecAlmacenamiento(capacity);
+    setPrecioFinal(price);
   };
 
   // Obtener la imagen correspondiente al color seleccionado
-  const selectedImage = product.colorOptions.find((color: any) => color.name === selectedColor)?.imageUrl || product.imageUrl;
+  const selectedImage = product.colorOptions.find((color: any) => color.name === selecionadoColor)?.imageUrl || product.imageUrl;
 
   // Agregar al carrito
-  const handleAddToCart = () => {
-    if (selectedColor && selectedStorage) {
+  const addCarrito = () => {
+    if (selecionadoColor && selecAlmacenamiento) {
       addToCarrito({
         id: product.id,
         name: product.name,
         brand: product.brand,
-        price: finalPrice,
-        color: selectedColor,
-        storage: selectedStorage,
+        price: precioFinal,
+        color: selecionadoColor,
+        storage: selecAlmacenamiento,
         imageUrl: selectedImage,
         quantity: 1
       });
+
+      // Redirige a la página del carrito
+      redirigir('/carrito');
     }
   };
 
@@ -61,9 +67,9 @@ export default function ProductoDetalle() {
             {product.colorOptions.map((color: any) => (
               <button
                 key={color.name}
-                className={`w-8 h-8 rounded-full border-2 ${selectedColor === color.name ? 'border-black' : 'border-gray-300'}`}
+                className={`w-8 h-8 rounded-full border-2 ${selecionadoColor === color.name ? 'border-black' : 'border-gray-300'}`}
                 style={{ backgroundColor: color.hexCode }}
-                onClick={() => setSelectedColor(color.name)}
+                onClick={() => setSelecionadoColor(color.name)}
               />
             ))}
           </div>
@@ -76,8 +82,8 @@ export default function ProductoDetalle() {
             {product.storageOptions.map((option: any) => (
               <button
                 key={option.capacity}
-                className={`border-2 p-2 ${selectedStorage === option.capacity ? 'border-black' : 'border-gray-300'}`}
-                onClick={() => handleStorageChange(option.capacity, option.price)}
+                className={`border-2 p-2 ${selecAlmacenamiento === option.capacity ? 'border-black' : 'border-gray-300'}`}
+                onClick={() => cambiarAlmacenamiento(option.capacity, option.price)}
               >
                 {option.capacity} - ${option.price}
               </button>
@@ -87,13 +93,13 @@ export default function ProductoDetalle() {
       </div>
 
       {/* Precio final */}
-      <p className="text-xl font-bold my-4">Precio: ${finalPrice}</p>
+      <p className="text-xl font-bold my-4">Precio: ${precioFinal}</p>
 
       {/* Botón de añadir al carrito */}
       <button
-        onClick={handleAddToCart}
-        disabled={!selectedColor || !selectedStorage}
-        className={`px-4 py-2 text-white rounded ${selectedColor && selectedStorage ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
+        onClick={addCarrito}
+        disabled={!selecionadoColor || !selecAlmacenamiento}
+        className={`px-4 py-2 text-white rounded ${selecionadoColor && selecAlmacenamiento ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
       >
         Añadir al carrito
       </button>
