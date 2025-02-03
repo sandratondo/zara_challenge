@@ -55,33 +55,28 @@ export default function ProductoDetalle() {
     <div className='my-b'>
       <Navegador />
       <div className="p-4">
-        <h1 className="text-2xl font-bold">{product.name}</h1>
-        <p className="text-gray-600">{product.brand}</p>
+        
 
-        {/* Imagen dinámica */}
-        <img src={selectedImage} alt={product.name} className="w-96 mx-auto my-4" />
-
-        {/* Selectores de color y almacenamiento */}
-        <div className="flex gap-4">
-          {/* Selección de color */}
-          <div>
-            <label className="block font-semibold">Color:</label>
-            <div className="flex gap-2">
-              {product.colorOptions.map((color: any) => (
-                <button
-                  key={color.name}
-                  className={`w-8 h-8 rounded-full border-2 ${selecionadoColor === color.name ? 'border-black' : 'border-gray-300'}`}
-                  style={{ backgroundColor: color.hexCode }}
-                  onClick={() => setSelecionadoColor(color.name)}
-                />
-              ))}
-            </div>
+        <div className='phone-container'>
+          {/* div izquierda */}
+          <div className='phone-image-container'>
+            <img src={selectedImage} alt={product.name} className="phone-image" />
           </div>
 
-          {/* Selección de almacenamiento */}
-          <div>
-            <label className="block font-semibold">Almacenamiento:</label>
-            <div className="flex gap-2">
+          {/* div derecha*/}
+          <div className='phone-info'>
+
+            <p className="phone-model">{product.name}</p>
+
+            <p className="phone-price">{precioFinal} EUR</p> 
+
+            {/* Fila 3: ¿CUÁNTO ESPACIO NECESITAS? */}
+            <div className="phone-row">
+              <label className="phone-storage-label">ALMACENAMIENTO ¿CUANTO ESPACIO NECESITAS?</label>
+            </div>
+
+            {/* Fila 4: Botones de almacenamiento*/}
+            <div className="phone-storage-options">
               {product.storageOptions.map((option: any) => (
                 <button
                   key={option.capacity}
@@ -92,20 +87,41 @@ export default function ProductoDetalle() {
                 </button>
               ))}
             </div>
+            
+            {/* Fila 5: Escoge tu color favorito */}
+            <div className="phone-row">
+              <label className="phone-color-label">ELIGE TU COLOR FAVORITO</label>
+            </div>
+
+            {/* Fila 6: Escoge tu color favorito */}
+            <div className="phone-color-options">
+              {product.colorOptions.map((color: any) => (
+                <button
+                  key={color.name}
+                  className={`w-8 h-8 rounded-full border-2 ${selecionadoColor === color.name ? 'border-black' : 'border-gray-300'}`}
+                  style={{ backgroundColor: color.hexCode }}
+                  onClick={() => setSelecionadoColor(color.name)}
+                />
+              ))}
+            </div>
+
+            {/* Fila 7: Nombre del color seleccionado */}
+            <p className="phone-selected-color">COLOR TITANIO</p>
+
+            {/* Fila 8: Botón de añadir al carrito */}
+            <button
+              onClick={addCarrito}
+              disabled={!selecionadoColor || !selecAlmacenamiento}
+              className={`px-4 py-2 text-white rounded ${selecionadoColor && selecAlmacenamiento ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
+            >
+              AÑADIR
+            </button>
+
+  
+
           </div>
+          {/* div fin */}
         </div>
-
-        {/* Precio final */}
-        <p className="text-xl font-bold my-4">Precio: ${precioFinal}</p>
-
-        {/* Botón de añadir al carrito */}
-        <button
-          onClick={addCarrito}
-          disabled={!selecionadoColor || !selecAlmacenamiento}
-          className={`px-4 py-2 text-white rounded ${selecionadoColor && selecAlmacenamiento ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
-        >
-          Añadir al carrito
-        </button>
 
         {/* Especificaciones del teléfono */}
         <div className="mt-6">

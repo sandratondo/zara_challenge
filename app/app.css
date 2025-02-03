@@ -536,6 +536,162 @@ table {
   border-bottom: none;
 }
 
+/* Contenedor principal */
+.phone-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Columna izquierda (Imagen) */
+.phone-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+/* Imagen del móvil */
+.phone-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* Columna derecha (Información) */
+.phone-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 300px;
+}
+
+/* Estilo de filas dentro de la columna de información */
+.phone-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* Modelo del teléfono */
+.phone-model {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+/* Precio */
+.phone-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Fila 3: "¿CUÁNTO ESPACIO NECESITAS?" */
+.phone-storage-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Fila 4: Botones de almacenamiento */
+.phone-storage-options {
+  display: flex;
+  gap: 0;
+}
+
+.phone-storage-btn {
+  flex: 1;
+  height: 50px;
+  background: white;
+  border: 2px solid gray;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.phone-storage-btn.selected {
+  border-color: black;
+}
+
+/* Fila 5: "ESCOGE TU COLOR FAVORITO" */
+.phone-color-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Fila 6: Cuadros de color */
+.phone-color-options {
+  display: flex;
+  gap: 8px;
+}
+
+.phone-color-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  cursor: pointer;
+}
+
+.phone-color-btn.selected {
+  border-color: black;
+}
+
+/* Fila 7: Nombre del color */
+.phone-selected-color {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Fila 8: Botón Añadir */
+.add-to-cart {
+  width: 100%;
+  padding: 12px;
+  background: blue;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* ---- RESPONSIVE ---- */
+
+/* En móvil, las columnas se apilan una debajo de la otra */
+@media (max-width: 768px) {
+  .phone-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phone-image-container,
+  .phone-info {
+    width: 100%;
+  }
+
+  .phone-storage-options,
+  .phone-color-options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .phone-storage-btn {
+    width: 30%;
+  }
+}
+
+
 
 
 @media (min-width: 640px) {
