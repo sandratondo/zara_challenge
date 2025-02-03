@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import { useCarritoContext } from '../context/CarritoContext';
 import { useNavigate } from 'react-router-dom';
 import Navegador from '../components/navegador';
-
+import DragScroll from '../components/DragScroll';
 
 export async function loader({ params }: any) {
   try {
@@ -125,19 +125,26 @@ export default function ProductoDetalle() {
         </div>
 
         {/* Productos similares */}
-        <div className="mt-6">
+        <DragScroll className="mt-6 scroll-container">
           <h2 className="text-xl font-semibold">Productos Similares</h2>
-          <div className="flex overflow-x-auto gap-4 p-2">
+          <div className="product-grid product-grid-scroll">
             {product.similarProducts.map((similar: any) => (
-              <div key={similar.id} className="border p-2 max-w-[150px]">
-                <img src={similar.imageUrl} alt={similar.name} className="w-24 h-24 object-cover mx-auto" />
-                <p className="text-sm text-center">{similar.brand} {similar.name}</p>
-                <p className="text-center font-bold">${similar.basePrice}</p>
+              <div key={similar.id} className="product-card product-card-scroll">
+                <img src={similar.imageUrl} alt={similar.name} className="product-image product-image-scroll" />
+                <div className="product-info">
+                  <p className="product-brand">{similar.brand}</p>
+                  <div className="product-details">
+                    <span className="product-name">{similar.name}</span>
+                    <span className="product-price">{similar.basePrice} EUR</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
+        </DragScroll>
       </div>
     </div>
   );
 }
+
+

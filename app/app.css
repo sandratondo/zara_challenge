@@ -325,8 +325,11 @@ nav{
     margin-top: 10px;
   }
 
-  .center-x{
-    position: relative;
+  .center-xy{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* Estilos generales para la cuadrícula */
@@ -441,6 +444,55 @@ nav{
   color: #eee;
 }
 
+/*scroll productos similares*/
+
+.scroll-container{
+  max-width: 1200px;
+  overflow-x: auto;  /* Habilita el scroll horizontal */
+  white-space: nowrap; /* Evita que los elementos se acomoden en varias líneas */
+  padding-bottom: 10px; /* Espaciado extra para que el scroll no se solape */
+  cursor: pointer;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 3px; /* Grosor del scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #9e9d9d;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #8b8b8b;
+}
+
+/* Productos en una sola fila */
+.product-grid-scroll {
+  display: flex;
+}
+
+/* Tarjetas de productos */
+.product-card-scroll {
+  flex: 0 0 auto; /* Evita que los productos se expandan más de lo necesario */
+  width: 220px; /* Tamaño fijo para cada producto */
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Imagen del producto */
+.product-image-scroll {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
 
 @media (min-width: 640px) {
     .grid-cols-2 {

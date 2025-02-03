@@ -20,7 +20,7 @@ export default function Home() {
         </div>
         <div className="page-content">
         <div className='container'>
-        {loading && <div className='center-x'><FaSpinner className="spinner-icon " size={35} /></div>}
+        {loading && <div className='center-xy'><FaSpinner className="spinner-icon " size={35} /></div>}
         {error && <p className='error-message'>{error}</p>}
         {!loading && !error && (
         <div className="product-grid  my-b">
