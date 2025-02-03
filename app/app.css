@@ -76,6 +76,11 @@ body {
     font-weight: bold;
 }
 
+.font-size-s {
+  font-size: .90rem;
+}
+
+
 .text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -493,6 +498,45 @@ nav{
   height: 150px;
   object-fit: contain;
 }
+
+/* Estilos para la tabla */
+table {
+  width: 100%; 
+  margin-top: 1.5rem;
+  border-collapse: collapse; 
+  border:none;
+}
+
+.specs-table {
+  width: 100%; /* Ocupar todo el ancho disponible */
+  margin-top: 1.5rem; /* Espaciado superior */
+  border-collapse: collapse; /* Eliminar bordes dobles */
+  border: none; /* Evitar cualquier borde global */
+}
+
+.specs-row {
+  display: table-row;
+}
+
+.specs-cell {
+  padding: 0.75rem 1rem; 
+  border-bottom: 1px solid #555454; 
+}
+
+.specs-label {
+  width: 30%;
+  text-transform: uppercase;
+}
+
+.specs-value {
+  width: 70%;
+}
+
+.specs-row:last-child .specs-cell {
+  border-bottom: none;
+}
+
+
 
 @media (min-width: 640px) {
     .grid-cols-2 {

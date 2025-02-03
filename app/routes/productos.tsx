@@ -110,16 +110,16 @@ export default function ProductoDetalle() {
         {/* Especificaciones del teléfono */}
         <div className="mt-6">
           <h2 className="text-xl font-semibold">Especificaciones</h2>
-          <table className="w-full border mt-2">
+          <table className="w-full mt-2 font-size-s">
             <tbody>
-              <tr><td className="border p-2">Pantalla:</td><td className="border p-2">{product.specs.screen}</td></tr>
-              <tr><td className="border p-2">Resolución:</td><td className="border p-2">{product.specs.resolution}</td></tr>
-              <tr><td className="border p-2">Procesador:</td><td className="border p-2">{product.specs.processor}</td></tr>
-              <tr><td className="border p-2">Cámara Principal:</td><td className="border p-2">{product.specs.mainCamera}</td></tr>
-              <tr><td className="border p-2">Cámara Selfie:</td><td className="border p-2">{product.specs.selfieCamera}</td></tr>
-              <tr><td className="border p-2">Batería:</td><td className="border p-2">{product.specs.battery}</td></tr>
-              <tr><td className="border p-2">Sistema Operativo:</td><td className="border p-2">{product.specs.os}</td></tr>
-              <tr><td className="border p-2">Tasa de Refresco:</td><td className="border p-2">{product.specs.screenRefreshRate}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Pantalla</td><td className="specs-cell specs-value">{product.specs.screen}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Resolución</td><td className="specs-cell specs-value">{product.specs.resolution}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Procesador</td><td className="specs-cell specs-value">{product.specs.processor}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Cámara Principal</td><td className="specs-cell specs-value">{product.specs.mainCamera}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Cámara Selfie</td><td className="specs-cell specs-value">{product.specs.selfieCamera}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Batería</td><td className="specs-cell specs-value">{product.specs.battery}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Sistema Operativo</td><td className="specs-cell specs-value">{product.specs.os}</td></tr>
+              <tr className="specs-row"><td className="specs-cell specs-label">Tasa de Refresco</td><td className="specs-cell specs-value">{product.specs.screenRefreshRate}</td></tr>
             </tbody>
           </table>
         </div>
