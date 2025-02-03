@@ -52,7 +52,7 @@ export default function ProductoDetalle() {
   };
 
   return (
-    <div>
+    <div className='my-b'>
       <Navegador />
       <div className="p-4">
         <h1 className="text-2xl font-bold">{product.name}</h1>

@@ -15,7 +15,7 @@ const Carrito: React.FC = () => {
     };
 
     return (
-      <div>
+      <div className='my-b'>
         <Navegador />
         <div className="container p-4">
           <div className="text-gray-600 text-m">CARRITO ({totalItems})</div>

@@ -8,11 +8,15 @@ interface TarjetaProductoProps {
 
 const TarjetaProducto: React.FC<TarjetaProductoProps> = ({ producto }) => {
   return (
-      <Link to={`/productos/${producto.id}`} className="product-card p-4">
-        <img src={producto.imageUrl} alt={producto.name} className="w-32 h-32 object-cover mb-2" />
-        <h3 className="font-bold">{producto.name}</h3>
-        <p>{producto.brand}</p>
-        <p>Precio: {producto.basePrice}</p>
+      <Link to={`/productos/${producto.id}`} className="product-card">
+        <img src={producto.imageUrl} alt={producto.name} className="product-image" />
+        <div className="product-info">
+          <p className="product-brand">{producto.brand}</p>
+          <div className="product-details">
+            <span className="product-name">{producto.name}</span>
+            <span className="product-price">{producto.basePrice} EUR</span>
+          </div>
+        </div>
       </Link>
   );
 };

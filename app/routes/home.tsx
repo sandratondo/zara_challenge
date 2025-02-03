@@ -9,15 +9,17 @@ export default function Home() {
   return (
     <div className='my-b'>
       <Navegador /> 
-
-      <div className='container'>
-        <input
-          type="text"
-          placeholder="Buscar productos" className='search-input'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <p className='result-text'>{productos.length} RESULTADOS</p> {/* Muestra el número de resultados buscador */}
+      <div className='search-container'>
+          <input
+            type="text"
+            placeholder="Buscar productos" className='search-input'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <p className='result-text'>{productos.length} RESULTADOS</p> {/* Muestra el número de resultados buscador */}
+        </div>
+        <div className="page-content">
+        <div className='container'>
         {loading && <div className='center-x'><FaSpinner className="spinner-icon " size={35} /></div>}
         {error && <p className='error-message'>{error}</p>}
         {!loading && !error && (
@@ -27,6 +29,7 @@ export default function Home() {
           ))}
         </div>
         )}
+      </div>
       </div>
     </div>
   );
