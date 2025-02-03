@@ -1,6 +1,7 @@
 import { useProductos } from '../context/ProductoContext';
 import TarjetaProducto from '../components/tarjetaProducto';
 import Navegador from '../components/navegador';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function Home() {
   const { productos, loading, error, searchTerm, setSearchTerm } = useProductos();
@@ -16,11 +17,11 @@ export default function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <p className='result-text'>{productos.length} RESULTADOS</p> {/* Muestra el número de resultados */}
-        {loading && <p>Cargando productos...</p>}
-        {error && <p>Error: {error}</p>}
+        <p className='result-text'>{productos.length} RESULTADOS</p> {/* Muestra el número de resultados buscador */}
+        {loading && <div className='center-x'><FaSpinner className="spinner-icon " size={35} /></div>}
+        {error && <p className='error-message'>{error}</p>}
         {!loading && !error && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="product-grid  my-b">
           {productos.map((producto, index) => (
             <TarjetaProducto key={index} producto={producto} /> // Usar el índice como key
           ))}
