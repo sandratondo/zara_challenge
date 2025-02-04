@@ -70,7 +70,7 @@ export default function ProductoDetalle() {
       <div className="page-content">
         <div className="container max-w-tbl p-4">
           
-
+        <div className='vh-fit'>
           <div className='phone-container'>
             {/* div izquierda */}
             <div className='phone-image-container'>
@@ -79,10 +79,10 @@ export default function ProductoDetalle() {
 
             {/* div derecha*/}
             <div className='phone-info'>
-
               <div className="phone-model">{product.name}</div>
-
-              <div className="phone-price">{precioFinal} EUR</div> 
+              <div className="phone-price text-capital">
+                {selecAlmacenamiento ? `${precioFinal} EUR` : `Desde ${product.basePrice} EUR`}
+              </div> 
 
               {/* Fila 3: ¿CUÁNTO ESPACIO NECESITAS? */}
               <div className="phone-row">
@@ -117,10 +117,11 @@ export default function ProductoDetalle() {
                       style={{ backgroundColor: color.hexCode }}
                       onClick={() => setSelecionadoColor(color.name)}
                     />
-                    <p className="phone-selected-color">{color.name}</p>
                   </div>
                 ))}
               </div>
+
+              <p className="phone-selected-color">{selecionadoColor}</p>
               
 
               {/* Fila 8: Botón de añadir al carrito */}
@@ -136,6 +137,7 @@ export default function ProductoDetalle() {
 
             </div>
             {/* div fin */}
+          </div>
           </div>
 
           {/* Especificaciones del teléfono */}
