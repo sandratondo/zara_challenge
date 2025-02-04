@@ -859,7 +859,10 @@ align-items: center;
   width: 30%;
 }
 
-
+.carrito-container{
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
 
 
 }

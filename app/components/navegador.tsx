@@ -13,7 +13,9 @@ const Navegador: React.FC = () => {
     <nav className="flex justify-between items-center">
       <Link to="/" className="font-bold text-black"><FaStore size={30} /></Link> 
       <div>
-        <Link to="/carrito" className="relative">
+        <Link to="/carrito" className="relative .text-black{
+  color: black;
+}">
           <HiOutlineShoppingBag size={24} />
           {cantidadTotal > 0 && (
             <span className="absolute carrito-count bg-red-500 text-white rounded-full text-xs px-2 py-1">
