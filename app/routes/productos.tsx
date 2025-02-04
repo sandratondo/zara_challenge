@@ -80,13 +80,13 @@ export default function ProductoDetalle() {
             {/* div derecha*/}
             <div className='phone-info'>
 
-              <p className="phone-model">{product.name}</p>
+              <div className="phone-model">{product.name}</div>
 
-              <p className="phone-price">{precioFinal} EUR</p> 
+              <div className="phone-price">{precioFinal} EUR</div> 
 
               {/* Fila 3: ¿CUÁNTO ESPACIO NECESITAS? */}
               <div className="phone-row">
-                <label className="phone-storage-label">ALMACENAMIENTO ¿CUANTO ESPACIO NECESITAS?</label>
+                <label className="phone-storage-label">STORAGE ¿CUÁNTO ESPACIO NECESITAS?</label>
               </div>
 
               {/* Fila 4: Botones de almacenamiento*/}
@@ -94,10 +94,10 @@ export default function ProductoDetalle() {
                 {product.storageOptions.map((option: any) => (
                   <button
                     key={option.capacity}
-                    className={`border-2 p-2 ${selecAlmacenamiento === option.capacity ? 'border-black' : 'border-gray-300'}`}
+                    className={`btn-white ${selecAlmacenamiento === option.capacity ? 'border-selected' : 'border-gray'}`}
                     onClick={() => cambiarAlmacenamiento(option.capacity, option.price)}
                   >
-                    {option.capacity} - ${option.price}
+                    {option.capacity}
                   </button>
                 ))}
               </div>
@@ -110,23 +110,24 @@ export default function ProductoDetalle() {
               {/* Fila 6: Escoge tu color favorito */}
               <div className="phone-color-options">
                 {product.colorOptions.map((color: any) => (
-                  <button
-                    key={color.name}
-                    className={`w-8 h-8 rounded-full border-2 ${selecionadoColor === color.name ? 'border-black' : 'border-gray-300'}`}
-                    style={{ backgroundColor: color.hexCode }}
-                    onClick={() => setSelecionadoColor(color.name)}
-                  />
+                  <div>
+                    <button
+                      key={color.name}
+                      className={`pick-box ${selecionadoColor === color.name ? 'border-selected' : 'border-gray-double'}`}
+                      style={{ backgroundColor: color.hexCode }}
+                      onClick={() => setSelecionadoColor(color.name)}
+                    />
+                    <p className="phone-selected-color">{color.name}</p>
+                  </div>
                 ))}
               </div>
-
-              {/* Fila 7: Nombre del color seleccionado */}
-              <p className="phone-selected-color">COLOR TITANIO</p>
+              
 
               {/* Fila 8: Botón de añadir al carrito */}
               <button
                 onClick={addCarrito}
                 disabled={!selecionadoColor || !selecAlmacenamiento}
-                className={`px-4 py-2 text-white rounded ${selecionadoColor && selecAlmacenamiento ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
+                className={`mt-m ${selecionadoColor && selecAlmacenamiento ? 'btn-main-black' : 'btn-disabled'}`}
               >
                 AÑADIR
               </button>
@@ -139,7 +140,7 @@ export default function ProductoDetalle() {
 
           {/* Especificaciones del teléfono */}
           <div className="mt-b">
-            <p className="text-upper">Especificaciones</p>
+            <p className="text-upper mb-8 ">Especificaciones</p>
             <table className="w-full mt-2 font-size-s">
               <tbody>
                 <tr className="specs-row"><td className="specs-cell specs-label">Pantalla</td><td className="specs-cell specs-value">{product.specs.screen}</td></tr>
@@ -156,7 +157,7 @@ export default function ProductoDetalle() {
 
           {/* Productos similares */}
           <DragScroll className="mt-b scroll-container">
-            <p className="text-upper">Productos Similares</p>
+            <p className="text-upper mb-8">Productos Similares</p>
             <div className="product-grid product-grid-scroll">
               {product.similarProducts.map((similar: any) => (
                 <div key={similar.id} className="product-card product-card-scroll">

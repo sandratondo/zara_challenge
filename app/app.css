@@ -60,6 +60,11 @@ body {
     margin-bottom: 0.5rem;
 }
 
+
+.mb-8 {
+  margin-bottom: 2.2rem;
+}
+
 .mx-b{
     margin: 0rem 2rem;
 }
@@ -74,6 +79,10 @@ body {
 
 .mt-b{
   margin-top: 5rem;
+}
+
+.mt-m{
+  margin-top: 2.5rem;
 }
 
 .font-bold {
@@ -235,27 +244,6 @@ nav{
     margin-left: -9px;
     }
   
-  /* Para pantallas móviles */
-  @media (max-width: 640px) {
-    .carrito-item {
-      grid-template-columns: 1fr; 
-    }
-    .carrito-item img {
-      width: 100%;
-    }
-  
-    .carrito-item .details {
-      padding-left: 0;
-    }
-  
-    /* Botones en móviles debajo */
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-  }
   
   /* Estilos para la sección de total y continuar comprando */
   .actions {
@@ -283,7 +271,6 @@ nav{
     padding: 0.75rem 1.5rem;
     cursor: pointer;
   }
-
 
   .button-secondary:hover {
     transform:scale(.99);
@@ -351,7 +338,6 @@ nav{
     transform: translate(-50%, -50%);
   }
 
-  /* Estilos generales para la cuadrícula */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -377,7 +363,6 @@ nav{
     overflow: hidden;
   }
   
-  /* hover fondo negro */
   .product-card::before {
     content: "";
     position: absolute;
@@ -467,14 +452,14 @@ nav{
 
 .scroll-container{
   max-width: 1200px;
-  overflow-x: auto;  /* Habilita el scroll horizontal */
-  white-space: nowrap; /* Evita que los elementos se acomoden en varias líneas */
-  padding-bottom: 10px; /* Espaciado extra para que el scroll no se solape */
+  overflow-x: auto;  
+  white-space: nowrap; 
+  padding-bottom: 10px; 
   cursor: pointer;
 }
 
 .scroll-container::-webkit-scrollbar {
-  height: 3px; /* Grosor del scrollbar */
+  height: 3px; 
 }
 
 .scroll-container::-webkit-scrollbar-track {
@@ -498,8 +483,8 @@ nav{
 
 /* Tarjetas de productos */
 .product-card-scroll {
-  flex: 0 0 auto; /* Evita que los productos se expandan más de lo necesario */
-  width: 220px; /* Tamaño fijo para cada producto */
+  flex: 0 0 auto; 
+  width: 220px; 
   background: white;
   border: 1px solid #ddd;
   padding: 10px;
@@ -522,10 +507,10 @@ table {
 }
 
 .specs-table {
-  width: 100%; /* Ocupar todo el ancho disponible */
-  margin-top: 1.5rem; /* Espaciado superior */
-  border-collapse: collapse; /* Eliminar bordes dobles */
-  border: none; /* Evitar cualquier borde global */
+  width: 100%; 
+  margin-top: 1.5rem; 
+  border-collapse: collapse; 
+  border: none; 
 }
 
 .specs-row {
@@ -547,8 +532,14 @@ table {
   width: 70%;
 }
 
-.specs-row:last-child .specs-cell {
-  border-bottom: none;
+
+.specs-row:first-child {
+  border-top: 1px solid #555454;
+}
+
+
+.specs-row:last-child {
+  border-bottom: 1px solid #555454;
 }
 
 /* Contenedor principal */
@@ -585,31 +576,31 @@ table {
   flex-direction: column;
   justify-content: space-between;
   min-width: 300px;
+  color: #3e3e3e;
+  text-transform: uppercase;
 }
 
 /* Estilo de filas dentro de la columna de información */
 .phone-row {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin: 2.5rem 0rem .7rem;
+  font-size: .85rem;
 }
 
 /* Modelo del teléfono */
 .phone-model {
   font-size: 1.75rem;
-  font-weight: bold;
 }
 
 /* Precio */
 .phone-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  margin: 1rem 0rem;
 }
 
 /* Fila 3: "¿CUÁNTO ESPACIO NECESITAS?" */
 .phone-storage-label {
-  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
@@ -625,7 +616,6 @@ table {
   background: white;
   border: 2px solid gray;
   text-align: center;
-  font-weight: bold;
   cursor: pointer;
 }
 
@@ -633,9 +623,10 @@ table {
   border-color: black;
 }
 
+
+
 /* Fila 5: "ESCOGE TU COLOR FAVORITO" */
 .phone-color-label {
-  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
@@ -657,11 +648,18 @@ table {
   border-color: black;
 }
 
+.pick-box{
+  padding: .5rem;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
 /* Fila 7: Nombre del color */
 .phone-selected-color {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: .7rem;
   margin-top: 0.5rem;
+  text-transform: lowercase;
+  color: #6a6a6a;
 }
 
 /* Fila 8: Botón Añadir */
@@ -705,12 +703,51 @@ table {
   cursor: pointer;
 }
 
+.btn-white{
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+  color:#555;
+  cursor: pointer;
+  min-width: 90px;
+}
 
 
 
-/* ---- RESPONSIVE ---- */
+.border-selected{
+  border: 1px solid #444;
+}
 
-/* En móvil, las columnas se apilan una debajo de la otra */
+.border-gray-double{
+  border: 2px double #ccc;
+}
+
+.border-gray{
+  border: 1px solid #ccc;
+}
+
+.btn-disabled{
+  max-width: 300px;
+  padding: 1rem;
+  background-color: #eee;
+  color: #cdcdcd;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-main-black{
+  max-width: 300px;
+  padding: 1rem;
+  background-color: #333;
+  color: #ccc;
+  border: 1px solid #3e3e3e;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+
 @media (max-width: 768px) {
   .phone-container {
     flex-direction: column;
@@ -733,18 +770,45 @@ table {
   }
 }
 
+  /* Para pantallas móviles */
+  @media (max-width: 640px) {
+    .carrito-item {
+      grid-template-columns: 1fr; 
+    }
+    .carrito-item img {
+      width: 100%;
+    }
+  
+    .carrito-item .details {
+      padding-left: 0;
+    }
+  
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
 
+    .grid-row{
+        gap: 1em;
+    }
+    .product-grid{
+        grid-template-columns: repeat(1, 1fr); /* 4 columnas en pantallas grandes */
+    }
+    nav{
+    padding: 1rem 5%;
+    }
 
+}
 
 @media (min-width: 640px) {
-    .grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+  .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .product-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
     }
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
-      }
-
-
 }
 
 @media (min-width: 768px) {
@@ -774,16 +838,5 @@ table {
       }
 }
 
-@media (max-width: 640px) {
-    .grid-row{
-        gap: 1em;
-    }
-    .product-grid{
-        grid-template-columns: repeat(1, 1fr); /* 4 columnas en pantallas grandes */
-    }
-    nav{
-    padding: 1rem 5%;
-    }
 
-}
 
