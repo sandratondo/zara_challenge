@@ -72,6 +72,10 @@ body {
     margin: 4rem 0rem;
 }
 
+.mt-b{
+  margin-top: 5rem;
+}
+
 .font-bold {
     font-weight: bold;
 }
@@ -185,6 +189,8 @@ nav{
 }
 
 
+
+
 .page-content {
   margin-top: 7rem; 
 }
@@ -194,6 +200,10 @@ nav{
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+  }
+
+  .max-w-tbl{
+    max-width: 1000px;
   }
   
   /* Estilos generales para el carrito */
@@ -277,6 +287,10 @@ nav{
 
   .button-secondary:hover {
     transform:scale(.99);
+  }
+
+  .text-upper{
+    text-transform: uppercase;
   }
   
   .actions .total-price {
@@ -526,6 +540,7 @@ table {
 .specs-label {
   width: 30%;
   text-transform: uppercase;
+  padding: 0;
 }
 
 .specs-value {
@@ -665,6 +680,33 @@ table {
   background: gray;
   cursor: not-allowed;
 }
+
+.volver-container {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1000;
+  background: white;
+  margin: 0 auto;
+}
+
+.volver-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: rgb(75, 75, 75);
+  border: none;
+  padding: 10px 15px;
+  font-size: .75rem;
+  cursor: pointer;
+}
+
+
+
 
 /* ---- RESPONSIVE ---- */
 
