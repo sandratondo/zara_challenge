@@ -1,4 +1,5 @@
-/* app.css */
+
+
 *{
     box-sizing: border-box;
 }
@@ -16,7 +17,7 @@ body {
 .grid-row{
     display: grid;
     grid-template-rows: 1fr auto;
-    gap: 10em;
+    gap: 10rem;
 }
 
 .no-border{
@@ -219,15 +220,15 @@ nav{
   .carrito-item {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 1rem;
+    gap: 3rem;
     align-items: center;
   }
   
   .carrito-item img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
+    max-height: 300px;
+    height: 100%;
+    object-fit: contain;
   }
   
   .carrito-item .details {
@@ -237,6 +238,8 @@ nav{
   
   .carrito-item .details p {
     margin: 0.25rem 0;
+    text-transform: uppercase;
+    color: #444444;
   }
 
   .carrito-count{
@@ -256,7 +259,7 @@ nav{
 .carrito-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Permite que el contenido crezca */
+  gap: 3rem;
 }
 
 .carrito-items {
@@ -270,18 +273,31 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    margin-top: 3rem;
   }
   
   .actions .total {
     font-size: 1.25rem;
     text-transform: uppercase;
     color: #3e3e3e;
+    display: inline-flex;
   }
   
   .actions button {
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
     cursor: pointer;
+  }
+
+  .total {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .total .btn-main-black{
+    max-width: 250px;
   }
   
   .button-secondary {
@@ -779,17 +795,38 @@ table {
   align-items: center;
 }
 
+.h-all{
+  margin-top: 4rem;
+
+}
 
 
+.carrito-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+.carrito-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
 
-
-
+.carrito-item .details .margin-bottom{
+   margin-top: 3%;
+}
 
 
 
 
 
 /* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .grid-row {
+    gap: 4rem;
+  }
+}
 
 
 @media (max-width: 768px) {
@@ -813,19 +850,42 @@ table {
   .phone-storage-btn {
     width: 30%;
   }
+
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .total {
+    flex-direction: column; /* Apila Total y Pagar en móvil */
+    align-items: center;
+  }
+
+  .total-m {
+    order: -1; /* Mueve Total arriba en móvil */
+    margin-bottom: 1rem;
+  }
+
+  .carrito-item img {
+    min-width: 200px;
+  }
+
+
 }
 
   /* Para pantallas móviles */
   @media (max-width: 640px) {
-    .carrito-item {
-      grid-template-columns: 1fr; 
-    }
+
     .carrito-item img {
-      width: 100%;
+      min-width: 150px;
     }
   
     .carrito-item .details {
       padding-left: 0;
+    }
+
+    .carrito-item{
+      gap: 0;
     }
   
     .actions {
