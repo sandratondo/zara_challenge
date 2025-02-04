@@ -15,7 +15,7 @@ const DragScroll: React.FC<DragScrollProps> = ({ children, className }) => {
   const handleMouseDown = (e: React.MouseEvent) => {
     isDown = true;
     if (!scrollRef.current) return;
-    scrollRef.current.classList.add("active");
+    scrollRef.current.classList.add('active');
     startX = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft = scrollRef.current.scrollLeft;
   };
@@ -23,13 +23,13 @@ const DragScroll: React.FC<DragScrollProps> = ({ children, className }) => {
   const handleMouseLeave = () => {
     isDown = false;
     if (!scrollRef.current) return;
-    scrollRef.current.classList.remove("active");
+    scrollRef.current.classList.remove('active');
   };
 
   const handleMouseUp = () => {
     isDown = false;
     if (!scrollRef.current) return;
-    scrollRef.current.classList.remove("active");
+    scrollRef.current.classList.remove('active');
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {

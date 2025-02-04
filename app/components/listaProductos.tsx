@@ -1,5 +1,5 @@
-import React from "react";
-import TarjetaProducto from "./tarjetaProducto";
+import React from 'react';
+import TarjetaProducto from './tarjetaProducto';
 
 interface Producto {
   id: string;

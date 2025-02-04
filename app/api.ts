@@ -11,7 +11,7 @@ const api = axios.create({
 
 export const getProducts = async (searchTerm: string = '') => {
   try {
-    const response = await api.get('/products',{
+    const response = await api.get('/products', {
       params: { search: searchTerm, limit: 20 }, //limite productos api
     });
     return response.data;

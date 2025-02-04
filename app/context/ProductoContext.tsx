@@ -25,7 +25,9 @@ const ProductoContext = createContext<ProductoContextType>({
   setSearchTerm: () => {},
 });
 
-export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [productos, setProductos] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,9 +49,10 @@ export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     fetchProductos();
   }, [searchTerm]);
 
-
   return (
-    <ProductoContext.Provider value={{ productos, loading, error, searchTerm, setSearchTerm }}>
+    <ProductoContext.Provider
+      value={{ productos, loading, error, searchTerm, setSearchTerm }}
+    >
       {children}
     </ProductoContext.Provider>
   );
