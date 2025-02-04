@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Navegador from '../components/navegador';
 import DragScroll from '../components/DragScroll';
 import { FaChevronLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export async function loader({ params }: any) {
   try {
@@ -162,16 +163,18 @@ export default function ProductoDetalle() {
             <p className="text-upper mb-8">Productos Similares</p>
             <div className="product-grid product-grid-scroll">
               {product.similarProducts.map((similar: any) => (
-                <div key={similar.id} className="product-card product-card-scroll">
-                  <img src={similar.imageUrl} alt={similar.name} className="product-image product-image-scroll" />
-                  <div className="product-info">
-                    <p className="product-brand">{similar.brand}</p>
-                    <div className="product-details">
-                      <span className="product-name">{similar.name}</span>
-                      <span className="product-price">{similar.basePrice} EUR</span>
+                <Link to={`/productos/${product.id}`}>
+                  <div key={similar.id} className="product-card product-card-scroll">
+                    <img src={similar.imageUrl} alt={similar.name} className="product-image product-image-scroll" />
+                    <div className="product-info">
+                      <p className="product-brand">{similar.brand}</p>
+                      <div className="product-details">
+                        <span className="product-name">{similar.name}</span>
+                        <span className="product-price">{similar.basePrice} EUR</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </DragScroll>
