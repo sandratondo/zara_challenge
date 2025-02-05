@@ -9,6 +9,7 @@ const api = axios.create({
   },
 });
 
+//productos buscar y límite desde la api 
 export const getProducts = async (searchTerm: string = '') => {
   try {
     const response = await api.get('/products', {
@@ -20,6 +21,7 @@ export const getProducts = async (searchTerm: string = '') => {
   }
 };
 
+//productos por id y detalles
 export const getProductById = async (id: string) => {
   try {
     const response = await api.get(`/products/${id}`);

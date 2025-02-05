@@ -1,5 +1,5 @@
 import { getProductById } from '../api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { useCarritoContext } from '../context/CarritoContext';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,17 @@ export default function ProductoDetalle() {
   );
   const [selecAlmacenamiento, setSelecAlmacenamiento] = useState('');
   const [precioFinal, setPrecioFinal] = useState(product.basePrice);
+
+  const uniqueSimilarProducts = Array.from(
+    new Map(product.similarProducts.map((p: any) => [p.id, p])).values()
+  );
+
+  // Cuando cambia el producto se actualiza el estado
+  useEffect(() => {
+    setSelecionadoColor(product.colorOptions[0]?.name || '');
+    setSelecAlmacenamiento('');
+    setPrecioFinal(product.basePrice);
+  }, [product]);
 
   // Manejar selección de almacenamiento y actualizar precio
   const cambiarAlmacenamiento = (capacity: string, price: number) => {
@@ -126,16 +137,18 @@ export default function ProductoDetalle() {
                 {/* Fila 6: Escoge tu color favorito */}
                 <div className="phone-color-options">
                   {product.colorOptions.map((color: any) => (
-                    <div>
+                    <div key={color.name}>
                       <button
-                        key={color.name}
                         className={`pick-box ${selecionadoColor === color.name ? 'border-selected' : 'border-gray-double'}`}
                         style={{ backgroundColor: color.hexCode }}
+                        aria-label={`Color: ${color.name}`}
+                        aria-selected={selecionadoColor === color.name ? 'true' : 'false'}
                         onClick={() => setSelecionadoColor(color.name)}
                       />
                     </div>
                   ))}
                 </div>
+
 
                 <p className="phone-selected-color">{selecionadoColor}</p>
 
@@ -211,12 +224,9 @@ export default function ProductoDetalle() {
           <DragScroll className="mt-b scroll-container">
             <p className="text-upper mb-8 color-dark">Productos Similares</p>
             <div className="product-grid product-grid-scroll">
-              {product.similarProducts.map((similar: any) => (
-                <Link to={`/productos/${product.id}`}>
-                  <div
-                    key={similar.id}
-                    className="product-card product-card-scroll"
-                  >
+              {uniqueSimilarProducts.map((similar: any) => (
+                <Link to={`/productos/${similar.id}`} key={similar.id}>
+                  <div className="product-card product-card-scroll">
                     <img
                       src={similar.imageUrl}
                       alt={similar.name}
@@ -226,9 +236,7 @@ export default function ProductoDetalle() {
                       <p className="product-brand">{similar.brand}</p>
                       <div className="product-details">
                         <span className="product-name">{similar.name}</span>
-                        <span className="product-price">
-                          {similar.basePrice} EUR
-                        </span>
+                        <span className="product-price">{similar.basePrice} EUR</span>
                       </div>
                     </div>
                   </div>

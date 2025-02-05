@@ -9,6 +9,7 @@ interface Product {
   imageUrl: string;
 }
 
+// Definición del contexto
 interface ProductoContextType {
   productos: Product[];
   loading: boolean;
@@ -17,6 +18,7 @@ interface ProductoContextType {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
+//crear contexto
 const ProductoContext = createContext<ProductoContextType>({
   productos: [],
   loading: false,
@@ -28,11 +30,13 @@ const ProductoContext = createContext<ProductoContextType>({
 export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // Estado para los productos, cargando, errores y buscar
   const [productos, setProductos] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
+  //cargar productos
   useEffect(() => {
     const fetchProductos = async () => {
       setLoading(true);
@@ -58,4 +62,5 @@ export const ProductoProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
+// Hook personalizado para acceder al contexto de los productos
 export const useProductos = () => React.useContext(ProductoContext);

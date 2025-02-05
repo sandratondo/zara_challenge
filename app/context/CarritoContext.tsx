@@ -11,6 +11,7 @@ interface CarritoItem {
   quantity: number;
 }
 
+//definir conexto carrito
 interface CarritoContextType {
   carrito: CarritoItem[];
   addToCarrito: (item: CarritoItem) => void;
@@ -18,6 +19,7 @@ interface CarritoContextType {
   totalPrecio: number;
 }
 
+//crear contexto
 const CarritoContext = createContext<CarritoContextType>({
   carrito: [],
   addToCarrito: () => {},
@@ -25,11 +27,13 @@ const CarritoContext = createContext<CarritoContextType>({
   totalPrecio: 0,
 });
 
+//componente carrito provider
 export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [carrito, setCarrito] = useState<CarritoItem[]>([]);
 
+  //Cargar carrito desde localstorage
   useEffect(() => {
     const storedCarrito = localStorage.getItem('carrito');
     if (storedCarrito) {
@@ -37,10 +41,12 @@ export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
+  //Guardar el carrito en localStorage
   useEffect(() => {
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }, [carrito]);
 
+  //añadir al carrito según condiciones
   const addToCarrito = (item: CarritoItem) => {
     setCarrito((prev) => {
       const existingItem = prev.find(
@@ -62,6 +68,7 @@ export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
+  //elimia producto  si coincide con los valores
   const removeFromCarrito = (id: string, color: string, storage: string) => {
     setCarrito((prev) =>
       prev.filter(
@@ -71,6 +78,7 @@ export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
+  //calcular precio total 
   const totalPrecio = carrito.reduce(
     (total, item) => total + item.price * item.quantity,
     0

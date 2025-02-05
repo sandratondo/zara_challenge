@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <div className="my-b">
       <Navegador />
+      {/* buscador */}
       <div className="search-container">
         <input
           type="text"
@@ -18,8 +19,9 @@ export default function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <p className="result-text">{productos.length} RESULTADOS</p>{' '}
+        
         {/* Muestra el número de resultados buscador */}
+        <p className="result-text">{productos.length} RESULTADOS</p>{' '}
       </div>
       <div className="page-content">
         <div className="container">
@@ -29,10 +31,12 @@ export default function Home() {
             </div>
           )}
           {error && <p className="error-message">{error}</p>}
+
+          {/* Muestra productos si no hay errores */}
           {!loading && !error && (
-            <div className="product-grid  my-b">
+            <div className="product-grid  my-b"> 
               {productos.map((producto, index) => (
-                <TarjetaProducto key={index} producto={producto} /> // Usar el índice como key
+                <TarjetaProducto key={index} producto={producto} /> 
               ))}
             </div>
           )}

@@ -2,6 +2,7 @@ import React from 'react';
 import { useCarritoContext } from '../context/CarritoContext';
 import { useNavigate } from 'react-router-dom';
 import Navegador from '../components/navegador';
+import { FaChevronLeft } from 'react-icons/fa';
 
 const Carrito: React.FC = () => {
   const { carrito, removeFromCarrito, totalPrecio } = useCarritoContext();
@@ -17,10 +18,16 @@ const Carrito: React.FC = () => {
   return (
     <div className="h-all">
       <Navegador />
-      <div className="container container-plus">
-        <div className="text-gray-600 text-m">CARRITO ({totalItems})</div>
+      <div className="container container-plus text-align-s">
+        <div className="text-m ">CARRITO ({totalItems})</div>
         {carrito.length === 0 ? (
-          <p className="text-gray-600">Tu carrito está vacío.</p>
+        <div className='displ-line'>
+          <button className="volver-btn" onClick={redirigirPrincipal}>
+            <FaChevronLeft size={10} className="icono" />
+            VOLVER
+          </button>
+          <p className="text-gray-600">Tu carrito está vacío</p>
+        </div>
         ) : (
           <div className="flexi">
             <div className="container p-4 carrito-container">
