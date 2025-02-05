@@ -869,7 +869,7 @@ table {
   }
 
   .carrito-item {
-    gap: 0;
+    gap: 0.7rem;
   }
 
   .actions {

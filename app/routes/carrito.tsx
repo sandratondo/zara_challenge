@@ -20,15 +20,18 @@ const Carrito: React.FC = () => {
       <Navegador />
       <div className="container container-plus text-align-s">
         <div className="text-m ">CARRITO ({totalItems})</div>
+
+        {/* Si el carrito está vacío*/}
         {carrito.length === 0 ? (
         <div className='displ-line'>
-          <button className="volver-btn" onClick={redirigirPrincipal}>
+          <button className="volver-btn" onClick={redirigirPrincipal} aria-label="Volver" role="button">
             <FaChevronLeft size={10} className="icono" />
             VOLVER
           </button>
-          <p className="text-gray-600">Tu carrito está vacío</p>
+          <p className="text-gray-600" aria-live="polite">Tu carrito está vacío</p>
         </div>
         ) : (
+          /* Si hay productos en el carrito los muestra */
           <div className="flexi">
             <div className="container p-4 carrito-container">
               <div className="mt-m">
@@ -38,12 +41,14 @@ const Carrito: React.FC = () => {
                       key={`${item.id}-${item.color}-${item.storage}`}
                       className="carrito-item p-4"
                     >
+                      {/* Imagen del producto */}
                       <img
                         src={item.imageUrl}
                         alt={item.name}
                         className="w-32 h-32 object-cover"
                       />
                       <div className="grid-row">
+                        {/* Detalles del producto */}
                         <div className="details flex-1">
                           <p className="text-sm">{item.name}</p>
                           <p className="text-sm">
@@ -54,6 +59,8 @@ const Carrito: React.FC = () => {
                             {item.price} EUR
                           </p>
                         </div>
+
+                        {/* Botón para eliminar el producto del carrito */}
                         <div className="mt-4">
                           <button
                             onClick={() =>
@@ -64,6 +71,7 @@ const Carrito: React.FC = () => {
                               )
                             }
                             className="bg-none text-sm text-red"
+                            aria-label={`Eliminar ${item.name} de color ${item.color} y almacenamiento ${item.storage} del carrito`}
                           >
                             Eliminar
                           </button>
@@ -83,8 +91,9 @@ const Carrito: React.FC = () => {
                   CONTINUAR COMPRANDO
                 </button>
               </div>
+              {/* Muestra precio total del carrito */}
               <div className="total">
-                <p>
+                <p role="status">
                   <span className="total mx">Total</span> {totalPrecio} EUR
                 </p>
               </div>

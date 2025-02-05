@@ -76,8 +76,9 @@ export default function ProductoDetalle() {
     <div className="my-b">
       <Navegador />
 
+      {/* Botón de volver */}
       <div className="volver-container">
-        <button className="volver-btn" onClick={redirigirPrincipal}>
+        <button className="volver-btn" onClick={redirigirPrincipal} aria-label="Volver" role="button">
           <FaChevronLeft size={10} className="icono" />
           VOLVER
         </button>
@@ -87,7 +88,7 @@ export default function ProductoDetalle() {
         <div className="container max-w-tbl p-4">
           <div className="vh-fit">
             <div className="phone-container">
-              {/* div izquierda */}
+              {/* Img Teléfono*/}
               <div className="phone-image-container">
                 <img
                   src={selectedImage}
@@ -96,7 +97,7 @@ export default function ProductoDetalle() {
                 />
               </div>
 
-              {/* div derecha*/}
+              {/* Información teléfono*/}
               <div className="phone-info">
                 <div className="phone-model">{product.name}</div>
                 <div className="phone-price text-capital">
@@ -105,14 +106,14 @@ export default function ProductoDetalle() {
                     : `Desde ${product.basePrice} EUR`}
                 </div>
 
-                {/* Fila 3: ¿CUÁNTO ESPACIO NECESITAS? */}
+                {/*¿CUÁNTO ESPACIO NECESITAS? */}
                 <div className="phone-row">
                   <label className="phone-storage-label">
                     STORAGE ¿CUÁNTO ESPACIO NECESITAS?
                   </label>
                 </div>
 
-                {/* Fila 4: Botones de almacenamiento*/}
+                {/* Botones de almacenamiento*/}
                 <div className="phone-storage-options">
                   {product.storageOptions.map((option: any) => (
                     <button
@@ -121,20 +122,21 @@ export default function ProductoDetalle() {
                       onClick={() =>
                         cambiarAlmacenamiento(option.capacity, option.price)
                       }
+                      aria-label={`Seleccionar almacenamiento ${option.capacity}`}
                     >
                       {option.capacity}
                     </button>
                   ))}
                 </div>
 
-                {/* Fila 5: Escoge tu color favorito */}
+                {/* Escoge tu color favorito */}
                 <div className="phone-row">
                   <label className="phone-color-label">
                     ELIGE TU COLOR FAVORITO
                   </label>
                 </div>
 
-                {/* Fila 6: Escoge tu color favorito */}
+                {/* Escoge tu color favorito */}
                 <div className="phone-color-options">
                   {product.colorOptions.map((color: any) => (
                     <div key={color.name}>
@@ -143,16 +145,15 @@ export default function ProductoDetalle() {
                         style={{ backgroundColor: color.hexCode }}
                         aria-label={`Color: ${color.name}`}
                         aria-selected={selecionadoColor === color.name ? 'true' : 'false'}
+                        role="radio"
                         onClick={() => setSelecionadoColor(color.name)}
                       />
                     </div>
                   ))}
                 </div>
-
-
                 <p className="phone-selected-color">{selecionadoColor}</p>
 
-                {/* Fila 8: Botón de añadir al carrito */}
+                {/* Botón de añadir al carrito */}
                 <button
                   onClick={addCarrito}
                   disabled={!selecionadoColor || !selecAlmacenamiento}

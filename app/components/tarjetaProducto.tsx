@@ -8,7 +8,8 @@ interface TarjetaProductoProps {
 
 const TarjetaProducto: React.FC<TarjetaProductoProps> = ({ producto }) => {
   return (
-    <Link to={`/productos/${producto.id}`} className="product-card">
+    // Vista tarjeta productos
+    <Link to={`/productos/${producto.id}`} className="product-card" aria-label={`Ver detalles de ${producto.name}`}>
       <img
         src={producto.imageUrl}
         alt={producto.name}
