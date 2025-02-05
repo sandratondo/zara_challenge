@@ -221,29 +221,35 @@ export default function ProductoDetalle() {
           </div>
 
           {/* Productos similares */}
-          <DragScroll className="mt-b scroll-container">
+          <div className='mt-b mb-8'>
             <p className="text-upper mb-8 color-dark">Productos Similares</p>
-            <div className="product-grid product-grid-scroll">
-              {uniqueSimilarProducts.map((similar: any) => (
-                <Link to={`/productos/${similar.id}`} key={similar.id}>
-                  <div className="product-card product-card-scroll">
-                    <img
-                      src={similar.imageUrl}
-                      alt={similar.name}
-                      className="product-image product-image-scroll"
-                    />
-                    <div className="product-info">
-                      <p className="product-brand">{similar.brand}</p>
-                      <div className="product-details">
-                        <span className="product-name">{similar.name}</span>
-                        <span className="product-price">{similar.basePrice} EUR</span>
+            <DragScroll className="scroll-container">
+              <div 
+                className="product-grid product-grid-scroll"
+                onDragStart={(e) => e.preventDefault()} 
+              >
+                {uniqueSimilarProducts.map((similar: any) => (
+                  <Link to={`/productos/${similar.id}`} key={similar.id}>
+                    <div className="product-card product-card-scroll" onDragStart={(e) => e.preventDefault()}>
+                      <img
+                        src={similar.imageUrl}
+                        alt={similar.name}
+                        className="product-image product-image-scroll"
+                        onDragStart={(e) => e.preventDefault()} 
+                      />
+                      <div className="product-info" onDragStart={(e) => e.preventDefault()}>
+                        <p className="product-brand" onDragStart={(e) => e.preventDefault()}>{similar.brand}</p>
+                        <div className="product-details" onDragStart={(e) => e.preventDefault()}>
+                          <span className="product-name" onDragStart={(e) => e.preventDefault()}>{similar.name}</span>
+                          <span className="product-price" onDragStart={(e) => e.preventDefault()}>{similar.basePrice} EUR</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </DragScroll>
+                  </Link>
+                ))}
+              </div>
+            </DragScroll>
+          </div>
         </div>
       </div>
     </div>

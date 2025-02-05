@@ -491,7 +491,11 @@ nav {
   overflow-x: auto;
   white-space: nowrap;
   padding-bottom: 10px;
-  cursor: pointer;
+  cursor: grab;
+}
+
+.scroll-container.active {
+  cursor: grabbing;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -806,7 +810,7 @@ table {
   display: flex;
 }
 
-.volver-btn{
+.displ-line .volver-btn{
   padding: 10px 10px 10px 0px;
 }
 
@@ -844,6 +848,14 @@ table {
   .carrito-container {
     padding-left: 0rem;
     padding-right: 0rem;
+  }
+
+  .h-fit{
+    min-height: inherit;
+  }
+
+  .btn-disabled, .btn-main-black{
+    width: 100%;
   }
 }
 
