@@ -17,7 +17,7 @@ const TarjetaProducto: React.FC<TarjetaProductoProps> = ({ producto }) => {
         className="product-image"
       />
       ) : null}
-      <div className="product-info">
+      <div  role="article" className="product-info">
         <p className="product-brand">{producto.brand}</p>
         <div className="product-details">
           <span className="product-name">{producto.name}</span>
