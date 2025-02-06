@@ -1,4 +1,3 @@
-// eslint.config.js
 import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
@@ -6,18 +5,18 @@ import react from 'eslint-plugin-react';
 import prettier from 'eslint-plugin-prettier';
 
 export default [
-  js.configs.recommended, // Configuración base de JavaScript
-  tseslint.configs.recommended, // Reglas recomendadas para TypeScript
-  react.configs.recommended, // Reglas recomendadas para React
+  js.configs.recommended, 
+  tseslint.configs.recommended, 
+  react.configs.recommended, 
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'], // Aplica reglas a archivos JS y TS
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'], 
     languageOptions: {
-      parser: tsparser, // Usa el parser de TypeScript
+      parser: tsparser, 
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
     plugins: {
-      prettier, // Plugin de Prettier
+      prettier, 
     },
     rules: {
       'prettier/prettier': 'error', // Aplica Prettier como regla
