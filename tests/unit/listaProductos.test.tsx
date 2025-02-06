@@ -38,6 +38,8 @@ describe('ListaProductos', () => {
       expect(screen.getByText(producto.name)).toBeInTheDocument();
       expect(screen.getByText(producto.brand)).toBeInTheDocument();
       expect(screen.getByText(`${producto.basePrice} EUR`)).toBeInTheDocument();
+      const img = screen.getByAltText(producto.name);
+      expect(img).toHaveAttribute('src', producto.imageUrl);
     });
 
     // Verifica que la cantidad de productos es correcta

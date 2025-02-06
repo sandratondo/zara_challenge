@@ -1,3 +1,4 @@
+import React from 'react';
 import { getProductById } from '../api';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
@@ -174,7 +175,7 @@ export default function ProductoDetalle() {
                 <tr className="specs-row">
                   <td className="specs-cell specs-label">Pantalla</td>
                   <td className="specs-cell specs-value">
-                    {product.specs.screen}
+                  {product.specs ? product.specs.screen : "Not available"}
                   </td>
                 </tr>
                 <tr className="specs-row">

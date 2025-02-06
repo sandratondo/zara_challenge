@@ -1,3 +1,4 @@
+import React from 'react';
 import { useProductos } from '../context/ProductoContext';
 import TarjetaProducto from '../components/tarjetaProducto';
 import Navegador from '../components/navegador';
@@ -26,7 +27,7 @@ export default function Home() {
       <div className="page-content">
         <div className="container">
           {loading && (
-            <div className="center-xy">
+            <div className="center-xy"  role="status">
               <FaSpinner className="spinner-icon " size={35} />
             </div>
           )}
