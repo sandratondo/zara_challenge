@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react'; 
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import TarjetaProducto from '../../app/components/tarjetaProducto'; 
-import { Product } from '../../types'; 
+import TarjetaProducto from '../../app/components/tarjetaProducto';
+import { Product } from '../../types';
 
 describe('Componente TarjetaProducto ', () => {
   const productoEjemplo: Product = {
@@ -10,7 +10,8 @@ describe('Componente TarjetaProducto ', () => {
     name: 'Iphone de Prueba',
     brand: 'Marca de Prueba',
     basePrice: 1129.99,
-    imageUrl: 'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png', 
+    imageUrl:
+      'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png',
   };
 
   test('Debería mostrar los datos del producto correctamente', () => {
@@ -27,15 +28,19 @@ describe('Componente TarjetaProducto ', () => {
     expect(screen.getByText(productoEjemplo.brand)).toBeInTheDocument();
 
     // Verifica que el precio del producto aparece
-    expect(screen.getByText(`${productoEjemplo.basePrice} EUR`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`${productoEjemplo.basePrice} EUR`)
+    ).toBeInTheDocument();
 
     // Verifica que la imagen se muestra correctamente
-    const imagen = screen.getByRole('img', { name: productoEjemplo.name }); 
+    const imagen = screen.getByRole('img', { name: productoEjemplo.name });
     expect(imagen).toHaveAttribute('src', productoEjemplo.imageUrl);
     expect(imagen).toHaveAttribute('alt', productoEjemplo.name);
 
     // Verifica que el enlace apunta a la URL correcta
-    const enlace = screen.getByRole('link', { name: `Ver detalles de ${productoEjemplo.name}` });
+    const enlace = screen.getByRole('link', {
+      name: `Ver detalles de ${productoEjemplo.name}`,
+    });
     expect(enlace).toHaveAttribute('href', `/productos/${productoEjemplo.id}`);
   });
 

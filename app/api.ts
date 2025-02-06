@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 
-//productos buscar y límite desde la api 
+//productos buscar y límite desde la api
 export const getProducts = async (searchTerm: string = '') => {
   try {
     const response = await api.get('/products', {

@@ -23,13 +23,20 @@ const Carrito: React.FC = () => {
 
         {/* Si el carrito está vacío*/}
         {carrito.length === 0 ? (
-        <div className='displ-line'>
-          <button className="volver-btn" onClick={redirigirPrincipal} aria-label="Volver" role="button">
-            <FaChevronLeft size={10} className="icono" />
-            VOLVER
-          </button>
-          <p className="text-gray-600" aria-live="polite">Tu carrito está vacío</p>
-        </div>
+          <div className="displ-line">
+            <button
+              className="volver-btn"
+              onClick={redirigirPrincipal}
+              aria-label="Volver"
+              role="button"
+            >
+              <FaChevronLeft size={10} className="icono" />
+              VOLVER
+            </button>
+            <p className="text-gray-600" aria-live="polite">
+              Tu carrito está vacío
+            </p>
+          </div>
         ) : (
           /* Si hay productos en el carrito los muestra */
           <div className="flexi">

@@ -17,9 +17,7 @@ const renderConContexto = (componente: React.ReactNode) => {
   return render(
     <BrowserRouter>
       <ProductoProvider>
-        <CarritoProvider>
-          {componente}
-        </CarritoProvider>
+        <CarritoProvider>{componente}</CarritoProvider>
       </ProductoProvider>
     </BrowserRouter>
   );
@@ -33,20 +31,21 @@ describe('Componente Home', () => {
         brand: 'Apple',
         name: 'iPhone 12',
         basePrice: 909,
-        imageUrl: 'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png',
+        imageUrl:
+          'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png',
       },
     ]);
 
     renderConContexto(<Home />);
 
     // Espera a que se actualice el contador de resultados
-    await waitFor(() => screen.getByText(/RESULTADOS/)); 
+    await waitFor(() => screen.getByText(/RESULTADOS/));
 
     // Verifica que el nombre del primer producto se muestre
     expect(screen.getByText('iPhone 12')).toBeInTheDocument();
 
     // Verifica que el precio base del producto se muestre
-    expect(screen.getByText(/909/)).toBeInTheDocument(); 
+    expect(screen.getByText(/909/)).toBeInTheDocument();
   });
 
   it('mensaje de error cuando la API falla', async () => {
@@ -69,7 +68,8 @@ describe('Componente Home', () => {
         brand: 'Apple',
         name: 'iPhone 12',
         basePrice: 909,
-        imageUrl: 'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png',
+        imageUrl:
+          'http://prueba-tecnica-api-tienda-moviles.onrender.com/images/SMG-A25-negro.png',
       },
     ]);
 
@@ -79,7 +79,7 @@ describe('Componente Home', () => {
     const campoDeBusqueda = screen.getByPlaceholderText('Buscar productos');
     fireEvent.change(campoDeBusqueda, { target: { value: 'iPhone' } });
 
-    // Espera a que se actualice el contador de resultados 
+    // Espera a que se actualice el contador de resultados
     await waitFor(() => screen.getByText(/RESULTADOS/));
 
     // Verifica que el resultado filtrado se muestre
@@ -88,7 +88,9 @@ describe('Componente Home', () => {
 
   it('debe mostrar el estado de carga mientras se obtienen los productos', async () => {
     // Simula una respuesta de API con retraso
-    getProducts.mockReturnValue(new Promise((resolve) => setTimeout(() => resolve([]), 1000))); 
+    getProducts.mockReturnValue(
+      new Promise((resolve) => setTimeout(() => resolve([]), 1000))
+    );
 
     renderConContexto(<Home />);
 
@@ -98,5 +100,4 @@ describe('Componente Home', () => {
     // Espera a que se carguen los productos y verifica
     await waitFor(() => screen.getByText(/RESULTADOS/));
   });
-
 });

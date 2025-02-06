@@ -8,6 +8,6 @@ export default defineConfig({
   build: {
     minify: 'terser', // Usar Terser para minificar el JS en producción
     sourcemap: process.env.NODE_ENV === 'development' ? 'inline' : false, // Habilitar los sourcemaps solo en desarrollo
-    assetsDir: 'assets', 
+    assetsDir: 'assets',
   },
 });

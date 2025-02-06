@@ -79,7 +79,12 @@ export default function ProductoDetalle() {
 
       {/* Botón de volver */}
       <div className="volver-container">
-        <button className="volver-btn" onClick={redirigirPrincipal} aria-label="Volver" role="button">
+        <button
+          className="volver-btn"
+          onClick={redirigirPrincipal}
+          aria-label="Volver"
+          role="button"
+        >
           <FaChevronLeft size={10} className="icono" />
           VOLVER
         </button>
@@ -145,7 +150,9 @@ export default function ProductoDetalle() {
                         className={`pick-box ${selecionadoColor === color.name ? 'border-selected' : 'border-gray-double'}`}
                         style={{ backgroundColor: color.hexCode }}
                         aria-label={`Color: ${color.name}`}
-                        aria-selected={selecionadoColor === color.name ? 'true' : 'false'}
+                        aria-selected={
+                          selecionadoColor === color.name ? 'true' : 'false'
+                        }
                         role="radio"
                         onClick={() => setSelecionadoColor(color.name)}
                       />
@@ -163,7 +170,6 @@ export default function ProductoDetalle() {
                   AÑADIR
                 </button>
               </div>
-              {/* div fin */}
             </div>
           </div>
 
@@ -175,7 +181,7 @@ export default function ProductoDetalle() {
                 <tr className="specs-row">
                   <td className="specs-cell specs-label">Pantalla</td>
                   <td className="specs-cell specs-value">
-                  {product.specs ? product.specs.screen : "Not available"}
+                    {product.specs ? product.specs.screen : 'Not available'}
                   </td>
                 </tr>
                 <tr className="specs-row">
@@ -223,27 +229,51 @@ export default function ProductoDetalle() {
           </div>
 
           {/* Productos similares */}
-          <div className='mt-b mb-8'>
+          <div className="mt-b mb-8">
             <p className="text-upper mb-8 color-dark">Productos Similares</p>
             <DragScroll className="scroll-container">
-              <div 
+              <div
                 className="product-grid product-grid-scroll"
-                onDragStart={(e) => e.preventDefault()} 
+                onDragStart={(e) => e.preventDefault()}
               >
                 {uniqueSimilarProducts.map((similar: any) => (
                   <Link to={`/productos/${similar.id}`} key={similar.id}>
-                    <div className="product-card product-card-scroll" onDragStart={(e) => e.preventDefault()}>
+                    <div
+                      className="product-card product-card-scroll"
+                      onDragStart={(e) => e.preventDefault()}
+                    >
                       <img
                         src={similar.imageUrl}
                         alt={similar.name}
                         className="product-image product-image-scroll"
-                        onDragStart={(e) => e.preventDefault()} 
+                        onDragStart={(e) => e.preventDefault()}
                       />
-                      <div className="product-info" onDragStart={(e) => e.preventDefault()}>
-                        <p className="product-brand" onDragStart={(e) => e.preventDefault()}>{similar.brand}</p>
-                        <div className="product-details" onDragStart={(e) => e.preventDefault()}>
-                          <span className="product-name" onDragStart={(e) => e.preventDefault()}>{similar.name}</span>
-                          <span className="product-price" onDragStart={(e) => e.preventDefault()}>{similar.basePrice} EUR</span>
+                      <div
+                        className="product-info"
+                        onDragStart={(e) => e.preventDefault()}
+                      >
+                        <p
+                          className="product-brand"
+                          onDragStart={(e) => e.preventDefault()}
+                        >
+                          {similar.brand}
+                        </p>
+                        <div
+                          className="product-details"
+                          onDragStart={(e) => e.preventDefault()}
+                        >
+                          <span
+                            className="product-name"
+                            onDragStart={(e) => e.preventDefault()}
+                          >
+                            {similar.name}
+                          </span>
+                          <span
+                            className="product-price"
+                            onDragStart={(e) => e.preventDefault()}
+                          >
+                            {similar.basePrice} EUR
+                          </span>
                         </div>
                       </div>
                     </div>

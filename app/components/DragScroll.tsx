@@ -6,7 +6,6 @@ interface DragScrollProps {
 }
 
 const DragScroll: React.FC<DragScrollProps> = ({ children, className }) => {
-
   const scrollRef = useRef<HTMLDivElement>(null); // Referencia al contenedor desplazable
   let isDown = false; // Variables para manejar el estado
   let startX: number;
@@ -19,7 +18,7 @@ const DragScroll: React.FC<DragScrollProps> = ({ children, className }) => {
     scrollRef.current.classList.add('active');
     startX = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft = scrollRef.current.scrollLeft;
-    scrollRef.current.style.cursor = 'grabbing'; 
+    scrollRef.current.style.cursor = 'grabbing';
   };
 
   //se ejecuta cuando el cursor sale del área del contenedor
@@ -55,7 +54,7 @@ const DragScroll: React.FC<DragScrollProps> = ({ children, className }) => {
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      style={{ cursor: 'grab' }} 
+      style={{ cursor: 'grab' }}
     >
       {children}
     </div>

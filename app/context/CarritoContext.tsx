@@ -78,7 +78,7 @@ export const CarritoProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  //calcular precio total 
+  //calcular precio total
   const totalPrecio = carrito.reduce(
     (total, item) => total + item.price * item.quantity,
     0

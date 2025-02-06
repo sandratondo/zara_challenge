@@ -14,10 +14,13 @@ interface ListaProductosProps {
 }
 
 const ListaProductos: React.FC<ListaProductosProps> = ({ productos }) => {
-
   // Lista de productos
   return (
-    <div className="grid grid-cols-4 gap-4" role="list" aria-label="Lista de productos">
+    <div
+      className="grid grid-cols-4 gap-4"
+      role="list"
+      aria-label="Lista de productos"
+    >
       {productos.map((producto) => (
         <TarjetaProducto key={producto.id} producto={producto} />
       ))}

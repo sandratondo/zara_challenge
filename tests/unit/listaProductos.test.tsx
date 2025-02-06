@@ -43,7 +43,7 @@ describe('ListaProductos', () => {
     });
 
     // Verifica que la cantidad de productos es correcta
-    const tarjetas = screen.getAllByRole('article'); 
+    const tarjetas = screen.getAllByRole('article');
     expect(tarjetas).toHaveLength(productosEjemplo.length);
   });
 

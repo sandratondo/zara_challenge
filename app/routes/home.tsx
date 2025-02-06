@@ -20,14 +20,13 @@ export default function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        
         {/* Muestra el número de resultados buscador */}
         <p className="result-text">{productos.length} RESULTADOS</p>{' '}
       </div>
       <div className="page-content">
         <div className="container">
           {loading && (
-            <div className="center-xy"  role="status">
+            <div className="center-xy" role="status">
               <FaSpinner className="spinner-icon " size={35} />
             </div>
           )}
@@ -35,9 +34,9 @@ export default function Home() {
 
           {/* Muestra productos si no hay errores */}
           {!loading && !error && (
-            <div className="product-grid  my-b"> 
+            <div className="product-grid  my-b">
               {productos.map((producto, index) => (
-                <TarjetaProducto key={index} producto={producto} /> 
+                <TarjetaProducto key={index} producto={producto} />
               ))}
             </div>
           )}
