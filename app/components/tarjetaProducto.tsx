@@ -10,11 +10,13 @@ const TarjetaProducto: React.FC<TarjetaProductoProps> = ({ producto }) => {
   return (
     // Vista tarjeta productos
     <Link to={`/productos/${producto.id}`} className="product-card" aria-label={`Ver detalles de ${producto.name}`}>
+      {producto.imageUrl ? (
       <img
         src={producto.imageUrl}
         alt={producto.name}
         className="product-image"
       />
+      ) : null}
       <div className="product-info">
         <p className="product-brand">{producto.brand}</p>
         <div className="product-details">
